@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{759F3B53-AADC-4A31-9101-0BA9F650FFDE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TasteFood</RootNamespace>
+    <AssemblyName>TasteFood</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44349</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.14\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Context\TasteContext.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AdminAboutController.cs" />
+    <Compile Include="Controllers\AdminAddressController.cs" />
+    <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AdminChefController.cs" />
+    <Compile Include="Controllers\AdminContactController.cs" />
+    <Compile Include="Controllers\AdminDashboardController.cs" />
+    <Compile Include="Controllers\AdminLayoutController.cs" />
+    <Compile Include="Controllers\AdminMailController.cs" />
+    <Compile Include="Controllers\AdminNotificationController.cs" />
+    <Compile Include="Controllers\AdminOpenDayHourController.cs" />
+    <Compile Include="Controllers\AdminProductController.cs" />
+    <Compile Include="Controllers\AdminProfileController.cs" />
+    <Compile Include="Controllers\AdminReservationController.cs" />
+    <Compile Include="Controllers\AdminSliderController.cs" />
+    <Compile Include="Controllers\AdminSocialMediaController.cs" />
+    <Compile Include="Controllers\AdminTestimonialController.cs" />
+    <Compile Include="Controllers\ChefController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DetailLayoutController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OpenDayHourController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Entity\About.cs" />
+    <Compile Include="Entity\Address.cs" />
+    <Compile Include="Entity\Admin.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Chef.cs" />
+    <Compile Include="Entity\Contact.cs" />
+    <Compile Include="Entity\Mail.cs" />
+    <Compile Include="Entity\Notification.cs" />
+    <Compile Include="Entity\OpenDayHour.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\Reservation.cs" />
+    <Compile Include="Entity\Slider.cs" />
+    <Compile Include="Entity\SocialMedia.cs" />
+    <Compile Include="Entity\Testimonial.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402271517371_categorywithproduct.cs" />
+    <Compile Include="Migrations\202402271517371_categorywithproduct.designer.cs">
+      <DependentUpon>202402271517371_categorywithproduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402271527223__updatecategorywithproduct.cs" />
+    <Compile Include="Migrations\202402271527223__updatecategorywithproduct.designer.cs">
+      <DependentUpon>202402271527223__updatecategorywithproduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402271535165_updatecatpro.cs" />
+    <Compile Include="Migrations\202402271535165_updatecatpro.designer.cs">
+      <DependentUpon>202402271535165_updatecatpro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402271550485_category-productid.cs" />
+    <Compile Include="Migrations\202402271550485_category-productid.designer.cs">
+      <DependentUpon>202402271550485_category-productid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402271901432__createadmin.cs" />
+    <Compile Include="Migrations\202402271901432__createadmin.designer.cs">
+      <DependentUpon>202402271901432__createadmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402291727432__productaddvirtual.cs" />
+    <Compile Include="Migrations\202402291727432__productaddvirtual.designer.cs">
+      <DependentUpon>202402291727432__productaddvirtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402291830106__addreservationcolumn.cs" />
+    <Compile Include="Migrations\202402291830106__addreservationcolumn.designer.cs">
+      <DependentUpon>202402291830106__addreservationcolumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403051712357_createnotification.cs" />
+    <Compile Include="Migrations\202403051712357_createnotification.designer.cs">
+      <DependentUpon>202403051712357_createnotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403051740400_newnotificationcolums.cs" />
+    <Compile Include="Migrations\202403051740400_newnotificationcolums.designer.cs">
+      <DependentUpon>202403051740400_newnotificationcolums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403051815365_aa.cs" />
+    <Compile Include="Migrations\202403051815365_aa.designer.cs">
+      <DependentUpon>202403051815365_aa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403072222180_newtablesocial_mail.cs" />
+    <Compile Include="Migrations\202403072222180_newtablesocial_mail.designer.cs">
+      <DependentUpon>202403072222180_newtablesocial_mail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403122016415__slideradd.cs" />
+    <Compile Include="Migrations\202403122016415__slideradd.designer.cs">
+      <DependentUpon>202403122016415__slideradd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403122019216_newslider.cs" />
+    <Compile Include="Migrations\202403122019216_newslider.designer.cs">
+      <DependentUpon>202403122019216_newslider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403122027366_remove.cs" />
+    <Compile Include="Migrations\202403122027366_remove.designer.cs">
+      <DependentUpon>202403122027366_remove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403122040005_aa1.cs" />
+    <Compile Include="Migrations\202403122040005_aa1.designer.cs">
+      <DependentUpon>202403122040005_aa1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403130141428__addcolomadmin.cs" />
+    <Compile Include="Migrations\202403130141428__addcolomadmin.designer.cs">
+      <DependentUpon>202403130141428__addcolomadmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403131252007_addtablecontactcolumn.cs" />
+    <Compile Include="Migrations\202403131252007_addtablecontactcolumn.designer.cs">
+      <DependentUpon>202403131252007_addtablecontactcolumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403131318369_b.cs" />
+    <Compile Include="Migrations\202403131318369_b.designer.cs">
+      <DependentUpon>202403131318369_b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403131320357_mesaj.cs" />
+    <Compile Include="Migrations\202403131320357_mesaj.designer.cs">
+      <DependentUpon>202403131320357_mesaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403131321465_durumm.cs" />
+    <Compile Include="Migrations\202403131321465_durumm.designer.cs">
+      <DependentUpon>202403131321465_durumm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403171353217_ContextModel.cs" />
+    <Compile Include="Migrations\202403171353217_ContextModel.designer.cs">
+      <DependentUpon>202403171353217_ContextModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Templates\colorlib-error-404-4\css\style.css" />
+    <Content Include="Templates\colorlib-error-404-4\index.html" />
+    <Content Include="Templates\colorlib-error-404-4\readme.txt" />
+    <Content Include="Templates\img\chef.jpeg" />
+    <Content Include="Templates\img\Dashboard.jpeg" />
+    <Content Include="Templates\img\Defalt4.jpeg" />
+    <Content Include="Templates\img\Default1.jpeg" />
+    <Content Include="Templates\img\default2.jpeg" />
+    <Content Include="Templates\img\Default3.jpeg" />
+    <Content Include="Templates\img\Defaultm.jpeg" />
+    <Content Include="Templates\img\Login.jpeg" />
+    <Content Include="Templates\img\Menü.jpeg" />
+    <Content Include="Templates\img\Profile.jpeg" />
+    <Content Include="Templates\img\rezervasyon listesi.jpeg" />
+    <Content Include="Templates\img\rezervasyon.jpeg" />
+    <Content Include="Templates\img\slider.jpeg" />
+    <Content Include="Templates\img\veritabanı.png" />
+    <Content Include="Templates\img\Ürüner.jpeg" />
+    <Content Include="Templates\img\İstatislikler.jpeg" />
+    <Content Include="Templates\Login_v3\css\main.css" />
+    <Content Include="Templates\Login_v3\css\util.css" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Templates\Login_v3\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="Templates\Login_v3\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="Templates\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Templates\Login_v3\images\bg-01.jpg" />
+    <Content Include="Templates\Login_v3\images\icons\favicon.ico" />
+    <Content Include="Templates\Login_v3\index.html" />
+    <Content Include="Templates\Login_v3\js\main.js" />
+    <Content Include="Templates\Login_v3\vendor\animate\animate.css" />
+    <Content Include="Templates\Login_v3\vendor\animsition\css\animsition.css" />
+    <Content Include="Templates\Login_v3\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Templates\Login_v3\vendor\animsition\js\animsition.js" />
+    <Content Include="Templates\Login_v3\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\js\popper.js" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Templates\Login_v3\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Templates\Login_v3\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Templates\Login_v3\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Templates\Login_v3\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Templates\Login_v3\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Templates\Login_v3\vendor\daterangepicker\moment.js" />
+    <Content Include="Templates\Login_v3\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Templates\Login_v3\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Templates\Login_v3\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Templates\Login_v3\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Templates\Login_v3\vendor\select2\select2.css" />
+    <Content Include="Templates\Login_v3\vendor\select2\select2.js" />
+    <Content Include="Templates\Login_v3\vendor\select2\select2.min.css" />
+    <Content Include="Templates\Login_v3\vendor\select2\select2.min.js" />
+    <Content Include="Templates\tasteit-master\about.html" />
+    <Content Include="Templates\tasteit-master\blog-single.html" />
+    <Content Include="Templates\tasteit-master\blog.html" />
+    <Content Include="Templates\tasteit-master\chef.html" />
+    <Content Include="Templates\tasteit-master\contact.html" />
+    <Content Include="Templates\tasteit-master\css\ajax-loader.gif" />
+    <Content Include="Templates\tasteit-master\css\animate.css" />
+    <Content Include="Templates\tasteit-master\css\bootstrap-datepicker.css" />
+    <Content Include="Templates\tasteit-master\css\bootstrap.min.css" />
+    <Content Include="Templates\tasteit-master\css\flaticon.css" />
+    <Content Include="Templates\tasteit-master\css\jquery.timepicker.css" />
+    <Content Include="Templates\tasteit-master\css\magnific-popup.css" />
+    <Content Include="Templates\tasteit-master\css\owl.carousel.min.css" />
+    <Content Include="Templates\tasteit-master\css\owl.theme.default.min.css" />
+    <Content Include="Templates\tasteit-master\css\style.css" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\backup.txt" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Templates\tasteit-master\formjs\form.js" />
+    <Content Include="Templates\tasteit-master\formjs\Mail.js" />
+    <Content Include="Templates\tasteit-master\images\about.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_1.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_2.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_3.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_4.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_5.jpg" />
+    <Content Include="Templates\tasteit-master\images\bg_6.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-7.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-8.jpg" />
+    <Content Include="Templates\tasteit-master\images\breakfast-9.jpg" />
+    <Content Include="Templates\tasteit-master\images\chef-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\chef-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\chef-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\chef-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\dessert-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\dessert-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\dessert-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\dessert-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\dessert-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\dinner-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\drink-7.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_1.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_2.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_3.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_4.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_5.jpg" />
+    <Content Include="Templates\tasteit-master\images\image_6.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\insta-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\loc.png" />
+    <Content Include="Templates\tasteit-master\images\lunch-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-7.jpg" />
+    <Content Include="Templates\tasteit-master\images\lunch-8.jpg" />
+    <Content Include="Templates\tasteit-master\images\menu-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\menu-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\menu-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_1.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_2.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_3.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_4.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_5.jpg" />
+    <Content Include="Templates\tasteit-master\images\person_6.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-1.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-2.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-3.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-4.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-5.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-6.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-7.jpg" />
+    <Content Include="Templates\tasteit-master\images\wine-8.jpg" />
+    <Content Include="Templates\tasteit-master\index.html" />
+    <Content Include="Templates\tasteit-master\js\bootstrap-datepicker.js" />
+    <Content Include="Templates\tasteit-master\js\bootstrap.min.js" />
+    <Content Include="Templates\tasteit-master\js\google-map.js" />
+    <Content Include="Templates\tasteit-master\js\jquery-3.2.1.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.animateNumber.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.easing.1.3.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.magnific-popup.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.stellar.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.timepicker.min.js" />
+    <Content Include="Templates\tasteit-master\js\jquery.waypoints.min.js" />
+    <Content Include="Templates\tasteit-master\js\main.js" />
+    <Content Include="Templates\tasteit-master\js\owl.carousel.min.js" />
+    <Content Include="Templates\tasteit-master\js\popper.min.js" />
+    <Content Include="Templates\tasteit-master\js\scrollax.min.js" />
+    <Content Include="Templates\tasteit-master\main.html" />
+    <Content Include="Templates\tasteit-master\menu.html" />
+    <Content Include="Templates\tasteit-master\readme.txt" />
+    <Content Include="Templates\tasteit-master\reservation.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Templates\Login_v3\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Templates\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Templates\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Templates\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Templates\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Templates\Login_v3\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Templates\Login_v3\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Templates\tasteit-master\.DS_Store" />
+    <Content Include="Templates\tasteit-master\css\.DS_Store" />
+    <Content Include="Templates\tasteit-master\fonts\.DS_Store" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\.DS_Store" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Templates\tasteit-master\fonts\flaticon\license\license.pdf" />
+    <Content Include="Templates\tasteit-master\images\.DS_Store" />
+    <Content Include="Templates\tasteit-master\js\.DS_Store" />
+    <Content Include="Templates\tasteit-master\prepros-6.config" />
+    <Content Include="Templates\tasteit-master\scss\.DS_Store" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\.DS_Store" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_interactions.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_alert.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_badge.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_button-group.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_buttons.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_card.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_carousel.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_close.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_code.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_forms.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_functions.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_grid.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_images.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_input-group.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_list-group.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_media.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_mixins.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_modal.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_nav.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_navbar.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_pagination.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_popover.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_print.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_progress.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_reboot.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_root.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_spinners.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_tables.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_toasts.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_transitions.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_type.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_utilities.scss" />
+    <Content Include="Templates\tasteit-master\scss\bootstrap\_variables.scss" />
+    <Content Include="Templates\tasteit-master\scss\style.scss" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\PartialAboutStatistic.cshtml" />
+    <Content Include="Views\AdminAbout\AboutList.cshtml" />
+    <Content Include="Views\AdminAbout\CreateAbout.cshtml" />
+    <Content Include="Views\AdminAbout\UpdateAbout.cshtml" />
+    <Content Include="Views\AdminAddress\AddressList.cshtml" />
+    <Content Include="Views\AdminAddress\CreateAddress.cshtml" />
+    <Content Include="Views\AdminAddress\UpdateAddress.cshtml" />
+    <Content Include="Views\AdminCategory\CategoryList.cshtml" />
+    <Content Include="Views\AdminCategory\CreateCategory.cshtml" />
+    <Content Include="Views\AdminCategory\UpdateCategory.cshtml" />
+    <Content Include="Views\AdminChef\ChefList.cshtml" />
+    <Content Include="Views\AdminChef\CreateChef.cshtml" />
+    <Content Include="Views\AdminChef\UpdateChef.cshtml" />
+    <Content Include="Views\AdminContact\ContactList.cshtml" />
+    <Content Include="Views\AdminDashboard\Chart.cshtml" />
+    <Content Include="Views\AdminDashboard\chartjs.cshtml" />
+    <Content Include="Views\AdminDashboard\Index.cshtml" />
+    <Content Include="Views\AdminDashboard\Mesajlar.cshtml" />
+    <Content Include="Views\AdminDashboard\progresbar.cshtml" />
+    <Content Include="Views\AdminDashboard\Rezervasyon.cshtml" />
+    <Content Include="Views\AdminLayout\Index.cshtml" />
+    <Content Include="Views\AdminLayout\PartialFooter.cshtml" />
+    <Content Include="Views\AdminLayout\PartialHead.cshtml" />
+    <Content Include="Views\AdminLayout\PartialMessage.cshtml" />
+    <Content Include="Views\AdminLayout\PartialNavbar.cshtml" />
+    <Content Include="Views\AdminLayout\PartialScript.cshtml" />
+    <Content Include="Views\AdminLayout\PartialSidebar.cshtml" />
+    <Content Include="Views\AdminMail\ContactList.cshtml" />
+    <Content Include="Views\AdminNotification\CreateNotification.cshtml" />
+    <Content Include="Views\AdminNotification\NotificationList.cshtml" />
+    <Content Include="Views\AdminNotification\UpdateNotification.cshtml" />
+    <Content Include="Views\AdminOpenDayHour\CreateOpenDayHour.cshtml" />
+    <Content Include="Views\AdminOpenDayHour\OpenDayHourList.cshtml" />
+    <Content Include="Views\AdminOpenDayHour\UpdateOpenDayHour.cshtml" />
+    <Content Include="Views\AdminProduct\CreateProduct.cshtml" />
+    <Content Include="Views\AdminProduct\ProductList.cshtml" />
+    <Content Include="Views\AdminProduct\UpdateProduct.cshtml" />
+    <Content Include="Views\AdminProfile\Index.cshtml" />
+    <Content Include="Views\AdminReservation\ReservationList.cshtml" />
+    <Content Include="Views\AdminReservation\UpdateReservation.cshtml" />
+    <Content Include="Views\AdminSlider\CreateSlider.cshtml" />
+    <Content Include="Views\AdminSlider\SliderList.cshtml" />
+    <Content Include="Views\AdminSlider\UpdateSlider.cshtml" />
+    <Content Include="Views\AdminSocialMedia\CreateSocialMedia.cshtml" />
+    <Content Include="Views\AdminSocialMedia\SocialMediaList.cshtml" />
+    <Content Include="Views\AdminSocialMedia\UpdateSocialMedia.cshtml" />
+    <Content Include="Views\AdminTestimonial\CreateTestimonial.cshtml" />
+    <Content Include="Views\AdminTestimonial\TestimonialList.cshtml" />
+    <Content Include="Views\AdminTestimonial\UpdateTestimonial.cshtml" />
+    <Content Include="Views\Chef\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\PartialContactUs.cshtml" />
+    <Content Include="Views\Contact\PartialContactİnformation.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\PartialAbout.cshtml" />
+    <Content Include="Views\Default\PartialChef.cshtml" />
+    <Content Include="Views\Default\PartialFooter.cshtml" />
+    <Content Include="Views\Default\PartialHead.cshtml" />
+    <Content Include="Views\Default\PartialInfo.cshtml" />
+    <Content Include="Views\Default\PartialMenu.cshtml" />
+    <Content Include="Views\Default\PartialNavbar.cshtml" />
+    <Content Include="Views\Default\PartialNavbarInfo.cshtml" />
+    <Content Include="Views\Default\PartialNavbarInfoSocialMedia.cshtml" />
+    <Content Include="Views\Default\PartialOpenDayHour.cshtml" />
+    <Content Include="Views\Default\PartialReservation.cshtml" />
+    <Content Include="Views\Default\PartialScript.cshtml" />
+    <Content Include="Views\Default\PartialSlider.cshtml" />
+    <Content Include="Views\Default\PartialSocialMedia.cshtml" />
+    <Content Include="Views\Default\PartialTestimonial.cshtml" />
+    <Content Include="Views\DetailLayout\Index.cshtml" />
+    <Content Include="Views\DetailLayout\PartialDetailPage.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Reservation\PartialReservationBookYourTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Templates\ruang-admin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202402271517371_categorywithproduct.resx">
+      <DependentUpon>202402271517371_categorywithproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402271527223__updatecategorywithproduct.resx">
+      <DependentUpon>202402271527223__updatecategorywithproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402271535165_updatecatpro.resx">
+      <DependentUpon>202402271535165_updatecatpro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402271550485_category-productid.resx">
+      <DependentUpon>202402271550485_category-productid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402271901432__createadmin.resx">
+      <DependentUpon>202402271901432__createadmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402291727432__productaddvirtual.resx">
+      <DependentUpon>202402291727432__productaddvirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402291830106__addreservationcolumn.resx">
+      <DependentUpon>202402291830106__addreservationcolumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403051712357_createnotification.resx">
+      <DependentUpon>202403051712357_createnotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403051740400_newnotificationcolums.resx">
+      <DependentUpon>202403051740400_newnotificationcolums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403051815365_aa.resx">
+      <DependentUpon>202403051815365_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403072222180_newtablesocial_mail.resx">
+      <DependentUpon>202403072222180_newtablesocial_mail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403122016415__slideradd.resx">
+      <DependentUpon>202403122016415__slideradd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403122019216_newslider.resx">
+      <DependentUpon>202403122019216_newslider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403122027366_remove.resx">
+      <DependentUpon>202403122027366_remove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403122040005_aa1.resx">
+      <DependentUpon>202403122040005_aa1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403130141428__addcolomadmin.resx">
+      <DependentUpon>202403130141428__addcolomadmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403131252007_addtablecontactcolumn.resx">
+      <DependentUpon>202403131252007_addtablecontactcolumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403131318369_b.resx">
+      <DependentUpon>202403131318369_b.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403131320357_mesaj.resx">
+      <DependentUpon>202403131320357_mesaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403131321465_durumm.resx">
+      <DependentUpon>202403131321465_durumm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403171353217_ContextModel.resx">
+      <DependentUpon>202403171353217_ContextModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50288</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44349/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
